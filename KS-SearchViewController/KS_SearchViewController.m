@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) UIView *disableViewOverlay;
 - (void)searchBar:(UISearchBar *)searchBar activate:(BOOL)active;
+- (void)dismissOverlayView;
 
 @end
 
@@ -42,6 +43,10 @@
 	self.disableViewOverlay = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, 320.0f, 416.0f)];
 	self.disableViewOverlay.backgroundColor = [UIColor blackColor];
 	self.disableViewOverlay.alpha = 0;
+    
+    // add gesture recognizer to overlay view
+    UITapGestureRecognizer *tapOverlay = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissOverlayView)];
+    [self.disableViewOverlay addGestureRecognizer:tapOverlay];
 }
 							
 - (void)viewDidLoad {
@@ -96,6 +101,10 @@
 }
 
 #pragma mark - Search Bar Functionality
+
+- (void)dismissOverlayView {
+    [self searchBarCancelButtonClicked:self.theSearchBar];
+}
 
 - (void)doSearch:(NSString *)searchText {
 	// implement search method - i.e. start NSURLConnection for server call
