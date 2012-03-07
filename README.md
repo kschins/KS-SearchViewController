@@ -20,11 +20,6 @@ Compatibility
 -------------
 iOS 5 as project uses ARC.
 
-Updates to come
----------------
-* Add ability to filter UITableView with each keystroke
-* Click dark overlay to dismiss search view
-
 License
 -------
 Copyright (c) 2012 Kasey Schindler
